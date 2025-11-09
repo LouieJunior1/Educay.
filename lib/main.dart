@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'screens/quiz_screen.dart';
+import 'screens/progress_screen.dart';
+import 'screens/teacher_dashboard_screen.dart';
 
 void main() {
   runApp(const EducayApp());
@@ -16,7 +19,13 @@ class EducayApp extends StatelessWidget {
         useMaterial3: true,
         colorSchemeSeed: Colors.indigo,
       ),
-      home: const HomeScreen(),
+      routes: {
+        '/': (context) => const HomeScreen(),
+        QuizScreen.routeName: (context) => const QuizScreen(),
+        ProgressScreen.routeName: (context) => const ProgressScreen(),
+        TeacherDashboardScreen.routeName: (context) =>
+            const TeacherDashboardScreen(),
+      },
     );
   }
 }
@@ -27,29 +36,29 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Educay'),
-        centerTitle: true,
-      ),
+      appBar: AppBar(title: const Text('Educay')),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            const Text(
-              'Welcome to Educay 👋',
-              style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
-            ),
-            const SizedBox(height: 20),
             ElevatedButton(
-              onPressed: () {},
+              onPressed: () {
+                Navigator.pushNamed(context, QuizScreen.routeName);
+              },
               child: const Text('Start Adaptive Quiz'),
             ),
+            const SizedBox(height: 12),
             ElevatedButton(
-              onPressed: () {},
+              onPressed: () {
+                Navigator.pushNamed(context, ProgressScreen.routeName);
+              },
               child: const Text('View Progress'),
             ),
+            const SizedBox(height: 12),
             ElevatedButton(
-              onPressed: () {},
+              onPressed: () {
+                Navigator.pushNamed(context, TeacherDashboardScreen.routeName);
+              },
               child: const Text('Teacher Dashboard'),
             ),
           ],
@@ -58,4 +67,3 @@ class HomeScreen extends StatelessWidget {
     );
   }
 }
-
