@@ -3,7 +3,7 @@ import 'package:provider/provider.dart';
 import 'screens/quiz_screen.dart';
 import 'screens/progress_screen.dart';
 import 'screens/teacher_dashboard_screen.dart';
-import 'services/students_services.dart';
+import 'services/student_service.dart';
 
 void main() {
   runApp(
